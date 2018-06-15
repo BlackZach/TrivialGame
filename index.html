@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Zachary's Trivia </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</head>
+<script>
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            seconds = parseInt(timer % 60, 10);
+            minutes = 0;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            display.textContent =  seconds;
+    
+            if (--timer < 0) {
+                timer = duration;
+                check();
+                stop.timer;
+                timer=0;
+            }
+        }, 1000);
+           
+    }
+    
+    window.onload = function () {
+        var thirtySeconds = 20 * 1,
+            display = document.querySelector('#time');
+        startTimer(thirtySeconds, display);
+    };
+    </script>
+    
+       
+</script>
+<body>
+    <form id = 'trivia' name= 'quiz'>
+        <h1>Zachary's Trivia Game</h1>
+        <div id = "dSpan" style="font-size: 30px"> You have <span id="time">20</span> seconds <br> to complete this test.</div>
+        <p>What is the capital of America?</p>
+        <input id ="textbox" type = "text" name = "question1">
+        
+        <p>Who is the president of the United States?</p>
+        <input type = "radio" id = "mc" name = "question2" value = "Donald Trump">Donald Trump<br>
+        <input type = "radio" id = "mc" name = "question2" value = "Mexico">Mexico<br>
+        <input type = "radio" id = "mc" name = "question2" value = "George Foreman">George Foreman<br>
+    
+
+        <p>Which famous golfer was defamed because of his sex addiction?</p>
+        <input type = "radio" id = "mc" name = "question3" value = "Bob Marley">Bob Marley<br>
+        <input type = "radio" id = "mc" name = "question3" value = "Tiger Woods">Tiger Woods<br>
+        <input type = "radio" id = "mc" name = "question3" value = "Christopher Reeves">Christopher Reeves<br>
+    <input class = "button" id="mc" value = "Evaluate my Competence!" onclick = check();> 
+</form>
+    <div id = "after_submit" style = "color: white">
+    <p id = "message"></p>    
+    <p id = "number_correct"></p>
+    <img id = "picture">
+     </div>
+</body>
+</html>
